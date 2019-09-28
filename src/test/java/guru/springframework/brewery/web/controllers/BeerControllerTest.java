@@ -51,7 +51,7 @@ class BeerControllerTest {
         validBeer = BeerDto.builder().id(UUID.randomUUID())
                 .version(1)
                 .beerName("Beer1")
-                    .beerStyle(BeerStyleEnum.PALE_ALE)
+                .beerStyle(BeerStyleEnum.PALE_ALE)
                 .price(new BigDecimal("12.99"))
                 .quantityOnHand(4)
                 .upc(123456789012L)
@@ -62,7 +62,7 @@ class BeerControllerTest {
 
     @AfterEach
     void tearDown() {
-        reset(beerService   );
+        reset(beerService);
     }
 
     @Test
@@ -71,7 +71,7 @@ class BeerControllerTest {
 
         given(beerService.findBeerById(any())).willReturn(validBeer);
 
-        MvcResult mvcResult =  mockMvc.perform(get("/api/v1/beer/" +   validBeer.getId()))
+        MvcResult mvcResult = mockMvc.perform(get("/api/v1/beer/" + validBeer.getId()))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(jsonPath("$.id", is(validBeer.getId().toString())))
