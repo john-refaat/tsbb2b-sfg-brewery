@@ -39,7 +39,7 @@ public class BeerPagedList extends PageImpl<BeerDto> {
                          @JsonProperty("numberOfElements") int numberOfElements) {
         super(content, PageRequest.of(number, size), totalElements);
 
-    }   
+    }
 
     public BeerPagedList(List<BeerDto> content, Pageable pageable, long total) {
         super(content, pageable, total);
